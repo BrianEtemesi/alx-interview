@@ -25,7 +25,7 @@ def minOperations(n):
     """
     returns the fewest number of operations needed
     """
-    
+
     if not isinstance(n, int) or n < 2:
         return 0
     return get_factor(n)
