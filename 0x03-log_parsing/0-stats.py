@@ -27,16 +27,19 @@ def parse_log():
                 total_size += file_size
 
                 if status_code in [200, 301, 400, 401, 403, 404, 405, 500]:
-                    status_code_counts[status_code] = status_code_counts.get(status_code, 0) + 1
+                    x = status_code_counts.get(status_code, 0) + 1
+                    status_code_counts[status_code] = x
 
     except KeyboardInterrupt:
         # If the user interrupts with CTRL+C, print the final statistics
         print_statistics(total_size, status_code_counts)
 
+
 def print_statistics(total_size, status_code_counts):
     print("File size: {}".format(total_size))
     for status_code in sorted(status_code_counts.keys()):
         print("{}: {}".format(status_code, status_code_counts[status_code]))
+
 
 if __name__ == "__main__":
     parse_log()
