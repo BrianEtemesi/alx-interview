@@ -6,9 +6,12 @@ import sys
 
 line_count = 0
 FileSize = 0
+
 status = {'200': 0, '301': 0, '400': 0, '401': 0,
           '403': 0, '404': 0, '405': 0, '500': 0}
+
 codes = ['200', '301', '400', '401', '403', '404', '405', '500']
+
 try:
     for line in sys.stdin:
         line_count += 1
