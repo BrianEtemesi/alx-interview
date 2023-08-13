@@ -36,7 +36,7 @@ request(url, function (err, res, body) {
 });
 
 // Function to check if all character names are retrieved
-function checkdata(data) {
+function checkdata (data) {
   for (let i = 0; i < data.length; i++) {
     if (data[i].name === '') {
       return false;
