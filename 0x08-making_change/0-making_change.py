@@ -10,19 +10,22 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-
-    # create list to store the minimum number of coins needed for each amount
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0
-
-    # Iterate through each coin value
+    
+    # Sort the coin denominations in descending order
+    coins.sort(reverse=True)
+    
+    num_coins = 0
+    remaining = total
+    
+    # Iterate through each coin denomination
     for coin in coins:
-        # Update the minimum number of coins needed for each amount
-        for amount in range(coin, total + 1):
-            dp[amount] = min(dp[amount], dp[amount - coin] + 1)
-
-    # If the min number of coins for the total is still infinity, return -1
-    if dp[total] == float('inf'):
-        return -1
-    # Otherwise, return the minimum number of coins needed for the total
-    return dp[total]
+        # While the remaining amount is greater than or equal to the current coin
+        while remaining >= coin:
+            remaining -= coin  # Subtract the coin value from the remaining amount
+            num_coins += 1     # Increment the count of used coins
+    
+    # If the remaining amount is 0, return the number of coins used
+    if remaining == 0:
+        return num_coins
+    else:
+        return -1  # Return -1 if the total amount cannot be reached
