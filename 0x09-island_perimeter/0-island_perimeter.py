@@ -3,12 +3,13 @@
 island perimeter interview question
 """
 
+
 def island_perimeter(grid):
     """
     returns perimeter of island
     """
     perimeter = 0
-    
+
     for i in range(len(grid)):
         for j in range(len(grid[i])):
             if grid[i][j] == 1:
